@@ -8,3 +8,4 @@ class Instructor:
         self.specialty = specialty
 
     def assign_exercise(self, student, exercise):
+        pass

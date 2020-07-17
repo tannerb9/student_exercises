@@ -6,4 +6,9 @@ class Cohort:
         self.instructors = []
 
     def addStudents(self, *students):
-        pass
+        for student in students:
+            self.students.append(student)
+
+    def addInstructors(self, *instructors):
+        for instructor in instructors:
+            self.instructors.append(instructor)
