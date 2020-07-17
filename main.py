@@ -50,3 +50,15 @@ for instructor in cohort_forty.instructors:
 cohort_forty_one.addInstructors(vert)
 for instructor in cohort_forty_one.instructors:
     print(instructor.first_name)
+
+betty.assign_exercise(jessie, classes_ex)
+betty.assign_exercise(tim, dicts_ex)
+terry.assign_exercise(sam, lists_ex)
+terry.assign_exercise(seymore, tuples_ex)
+vert.assign_exercise(jessie, lists_ex)
+vert.assign_exercise(tim, lists_ex)
+
+jessie.show_assignments()
+tim.show_assignments()
+sam.show_assignments()
+seymore.show_assignments()
