@@ -1,6 +1,5 @@
-from student import Student
 from exercise import Exercise
-from instructor import Instructor
+from schoolmember import Instructor, Student
 from cohort import Cohort
 
 
