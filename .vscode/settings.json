@@ -1,3 +1,11 @@
 {
-  "python.pythonPath": "/home/tannerb9/.pyenv/versions/3.8.1/bin/python"
+  "python.pythonPath": "/home/tannerb9/.pyenv/versions/3.8.1/bin/python",
+  "sqltools.connections": [
+    {
+      "database": "studentexercises.db",
+      "driver": "SQLite",
+      "name": "studentexercises",
+      "previewLimit": 50
+    }
+  ]
 }
