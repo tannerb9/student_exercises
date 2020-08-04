@@ -171,6 +171,40 @@ class StudentExerciseReports():
             for instructor in all_instructors:
                 print(instructor)
 
+    def students_and_exercises(self):
+
+        exercises = {}
+
+        with sqlite3.connect(self.db_path) as conn:
+
+            db_cursor = conn.cursor()
+            db_cursor.execute("""
+            SELECT e.exercise_id,
+            e.title,
+            s.student_id,
+            s.first_name,
+            s.last_name
+            FROM exercises e
+            JOIN student_exercises se ON se.exercise_id = e.exercise_id
+            JOIN students s ON s.student_id = se.student_id;
+            """)
+
+            dataset = db_cursor.fetchall()
+
+            for data in dataset:
+                exercise_name = data[1]
+                student_name = f'{data[3]} {data[4]}'
+
+                if exercise_name not in exercises:
+                    exercises[exercise_name] = [student_name]
+                else:
+                    exercises[exercise_name].append(student_name)
+
+        for exercise_name, students in exercises.items():
+            print(exercise_name)
+            for student in students:
+                print(f'\t* {student}')
+
 
 reports = StudentExerciseReports()
 reports.all_students()
@@ -179,3 +213,4 @@ reports.all_exercises()
 reports.js_exercises()
 reports.python_exercises()
 reports.cohort_instructors()
+reports.students_and_exercises()
