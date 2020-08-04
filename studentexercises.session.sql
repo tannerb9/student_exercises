@@ -95,52 +95,52 @@ VALUES
   ("Functions", "JavaScript");
 
 INSERT INTO instructors
-SELECT NULL, "Joe", "Shepherd", "joeshep", "dad jokes", c.name
+SELECT NULL, "Joe", "Shepherd", "joeshep", "dad jokes", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 40";
 
 INSERT INTO instructors
-SELECT NULL, "Lucy", "Gucy", "lgucy", "burping", c.name
+SELECT NULL, "Lucy", "Gucy", "lgucy", "burping", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 41";
 
 INSERT INTO instructors
-SELECT NULL, "Fire", "Cracker", "popboom", "scaring people", c.name
+SELECT NULL, "Fire", "Cracker", "popboom", "scaring people", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 42";
 
 INSERT INTO students
-SELECT NULL, "Joe", "Dirt", "deertay", c.name
+SELECT NULL, "Joe", "Dirt", "deertay", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 40";
 
 INSERT INTO students
-SELECT NULL, "Flo", "Rider", "floflo", c.name
+SELECT NULL, "Flo", "Rider", "floflo", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 40";
 
 INSERT INTO students
-SELECT NULL, "Dirk", "Diggler", "diggler", c.name
+SELECT NULL, "Dirk", "Diggler", "diggler", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 41";
 
 INSERT INTO students
-SELECT NULL, "Jess", "Bess", "jessie", c.name
+SELECT NULL, "Jess", "Bess", "jessie", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 41";
 
 INSERT INTO students
-SELECT NULL, "Mira", "Till", "mtill", c.name
+SELECT NULL, "Mira", "Till", "mtill", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 41";
 
 INSERT INTO students
-SELECT NULL, "Jack", "Black", "jblack", c.name
+SELECT NULL, "Jack", "Black", "jblack", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 42";
 
 INSERT INTO students
-SELECT NULL, "Laura", "Croft", "raider", c.name
+SELECT NULL, "Laura", "Croft", "raider", c.cohort_id
 FROM cohorts c
 WHERE c.name = "Cohort 42";
 
@@ -214,3 +214,22 @@ SELECT NULL, s.student_id, e.exercise_id
 FROM students s, exercises e
 WHERE s.slack = "raider" AND e.title = "Tuples";
 
+SELECT i.instructor_id,
+  i.first_name,
+  i.last_name,
+  i.slack,
+  i.cohort_id,
+  c.name
+FROM instructors i
+  JOIN cohorts c ON i.cohort_id = c.cohort_id
+ORDER BY i.cohort_id;
+
+select s.student_id,
+  s.first_name,
+  s.last_name,
+  s.slack,
+  s.cohort_id,
+  c.name
+from students s
+  join cohorts c on s.cohort_id = c.cohort_id
+order by s.cohort_id
