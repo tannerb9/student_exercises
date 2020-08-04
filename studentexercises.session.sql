@@ -224,12 +224,5 @@ FROM instructors i
   JOIN cohorts c ON i.cohort_id = c.cohort_id
 ORDER BY i.cohort_id;
 
-select s.student_id,
-  s.first_name,
-  s.last_name,
-  s.slack,
-  s.cohort_id,
-  c.name
-from students s
-  join cohorts c on s.cohort_id = c.cohort_id
-order by s.cohort_id
+SELECT e.exercise_id, e.title, s.student_id, s.first_name, s.last_name
+FROM exercises e JOIN student_exercises se ON se.exercise_id = e.exercise_id JOIN students s ON s.student_id = se.student_id;
